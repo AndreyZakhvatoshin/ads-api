@@ -21,6 +21,10 @@ class Database
         return new \PDO("{$_ENV['DB_CONNECTION']}:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_DATABASE']}", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
     }
 
+    public function createTable()
+    {
+        
+    }
     public function createAds($table, $data)
     {
         
