@@ -3,7 +3,7 @@
 use App\Controllers\AdsController;
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/ads/relevant', [AdsController::class, 'index']);
+    $r->addRoute('GET', '/ads/relevant', [AdsController::class, 'relevant']);
     $r->addRoute('POST', '/ads', [AdsController::class, 'store']);
     $r->addRoute('POST', '/ads/{id:\d+}', [AdsController::class, 'update']);
     $r->addRoute('GET', '/', [AdsController::class, 'index']);
