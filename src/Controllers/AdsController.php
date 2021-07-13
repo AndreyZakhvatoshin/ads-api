@@ -19,17 +19,19 @@ class AdsController
         $request = Request::createFromGlobals();
         $validator = new Validator();
         if (!$validator->validateAds($request->request->all())) {
-            $response = new JsonResponse(['errors' => $validator->getErrors(), 'code' => 400, 'data' => []]);
+            $response = new JsonResponse(['message' => $validator->getErrors(), 'code' => 400, 'data' => []]);
             return $response->send();
         }
         $db = new Database();
         $db->createAds('ads', $request->request->all());
-        $response = new JsonResponse(["message" => "OK",
+        $response = new JsonResponse([
+            "message" => "OK",
             "code" => 200,
             "data" => [
                 "id" => $db->lastId,
                 "text" => $request->request->get('text'),
-                "banner" => $request->request->get('banner')],
+                "banner" => $request->request->get('banner')
+            ],
         ]);
         return $response->send();
     }
@@ -39,5 +41,6 @@ class AdsController
     }
 
     public function show()
-    {}
+    {
+    }
 }
