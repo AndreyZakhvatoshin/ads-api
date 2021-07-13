@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+    nginx:
+        build:
+            context: docker/nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - .:/app
+        links:
+            - php-fpm
+    php-fpm:
+        build:
+            context: docker/php-fpm
+        volumes:
+            - .:/app
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=mysql"
+        links:
+            - mysql
+    mysql:
+        image: mysql
+        volumes:
+            - ./db:/var/lib/mysql
+        environment:
+            - "MYSQL_ROOT_PASSWORD=secret"
+            - "MYSQL_USER=app"
+            - "MYSQL_PASSWORD=secret"
+            - "MYSQL_DATABASE=app"
+        ports:
+            - "33061:3306"
