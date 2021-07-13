@@ -1,5 +1,5 @@
 FROM composer:latest as composer
-FROM 7.4-fpm-alpine3.13 as php
+FROM php:7.4-fpm-alpine3.13 as php
 
 RUN set -xe \
     && apk add --no-cache \
@@ -52,4 +52,5 @@ ENV COMPOSER_MEMORY_LIMIT=-1
 
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 RUN /usr/local/bin/composer self-update
+
 WORKDIR /app
