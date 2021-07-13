@@ -10,6 +10,7 @@ class Database
 {
     private $pdo;
     private $factory;
+    public $lastId;
 
     public function __construct()
     {
@@ -23,10 +24,15 @@ class Database
 
     public function createTable()
     {
-        
+
     }
     public function createAds($table, $data)
     {
-        
+        $insert = $this->factory->newInsert();
+        $insert->into($table)
+            ->cols($data);
+        $sth = $this->pdo->prepare($insert->getStatement());
+        $sth->execute($insert->getBindValues());
+        $this->lastId = $this->pdo->lastInsertId();
     }
 }
