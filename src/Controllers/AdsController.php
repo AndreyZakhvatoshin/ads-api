@@ -40,7 +40,9 @@ class AdsController
         var_dump(dirname(dirname(__DIR__)));
     }
 
-    public function show()
+    public function relevant()
     {
+        $db = new Database();
+        $data = $db->relevant('ads');
     }
 }
