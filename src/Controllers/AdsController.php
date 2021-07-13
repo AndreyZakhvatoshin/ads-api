@@ -9,12 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdsController
 {
-    public function index()
-    {
-        $db = new Database();
-        var_dump($db);
-    }
-
     /**
      * Create new ads
      *
