@@ -7,5 +7,4 @@ docker-down:
 docker-build:
 	docker-compose up --build -d
 
-test:
-	docker exec ads_php-fpm_1 vendor/bin/phpunit --colors=always
+

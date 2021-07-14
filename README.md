@@ -24,7 +24,6 @@ composer install
 | make docker-up    | docker-compose up -d                                         |
 | make docker-down  | docker-compose down                                          |
 | make docker-build | docker-compose up --build -d                                 |
-| make test         | docker exec ads_php-fpm_1 vendor/bin/phpunit --colors=always |
 
 ## Создание таблицы
 Дамп таблицы находится в корневой папке проекта dump.sql
